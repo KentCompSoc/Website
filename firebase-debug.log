@@ -1,0 +1,37 @@
+[debug] [2018-10-23T00:26:11.543Z] ----------------------------------------------------------------------
+[debug] [2018-10-23T00:26:11.546Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\tomha\AppData\Roaming\npm\node_modules\firebase-tools\bin\firebase serve
+[debug] [2018-10-23T00:26:11.546Z] CLI Version:   4.2.1
+[debug] [2018-10-23T00:26:11.546Z] Platform:      win32
+[debug] [2018-10-23T00:26:11.546Z] Node Version:  v9.5.0
+[debug] [2018-10-23T00:26:11.546Z] Time:          Tue Oct 23 2018 01:26:11 GMT+0100 (GMT Daylight Time)
+[debug] [2018-10-23T00:26:11.546Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-10-23T00:26:11.562Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-10-23T00:26:11.563Z] > authorizing via signed-in user
+[debug] [2018-10-23T00:26:11.565Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-10-23T00:26:11.565Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+
+[debug] [2018-10-23T00:26:11.745Z] <<< HTTP RESPONSE 200
+[debug] [2018-10-23T00:26:11.756Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/kent-compsoc  
+ 
+[debug] [2018-10-23T00:26:12.312Z] <<< HTTP RESPONSE 200
+[debug] [2018-10-23T00:26:12.313Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/kent-compsoc  
+ 
+[debug] [2018-10-23T00:26:13.026Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from 'C:\Git\newRepository\Website'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2018-10-23T00:26:14.278Z] Fetching environment
+[debug] [2018-10-23T00:26:14.280Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/787078204504:getServerAppConfig  
+ 
+[debug] [2018-10-23T00:26:14.281Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/787078204504/clients/_:getWebAppConfig  
+ 
+[debug] [2018-10-23T00:26:14.468Z] <<< HTTP RESPONSE 200
+[debug] [2018-10-23T00:26:14.469Z] Starting @google-cloud/functions-emulator
+[debug] [2018-10-23T00:26:14.618Z] <<< HTTP RESPONSE 200
+[warn] !  hosting: Port 5000 is not available. Trying another port...
+[info] i  hosting[kent-compsoc]: Serving hosting files from: public
+[info] +  hosting[kent-compsoc]: Local server: http://localhost:5005
+[debug] [2018-10-23T00:26:17.515Z] Parsing function triggers
+[info] i  functions: No HTTPS functions found. Use firebase functions:shell if you would like to emulate other types of functions.

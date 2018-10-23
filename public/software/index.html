@@ -42,14 +42,14 @@
             <a class="text-center h3" style="font-family: Arial" href="/">Kent CompSoc</a>
           </div>
           <div class="col-md-6 d-flex justify-content-md-end justify-content-sm-center align-content-sm-center">
-            <a class="btn btn-light" href="/sponsors">Sponsors</a>
-            <a class="btn btn-light" href="/about">About</a>
+            <a type="btn" class="btn btn-light" href="/sponsors">Sponsors</a>
+            <a type="btn" class="btn btn-light" href="/about">About</a>
             <button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Activities</button>
             <div class="dropdown-menu">
               <a class="dropdown-item" href="/education">Education</a>
-              <a class="dropdown-item" href="/software">Software Development</a>
+              <a class="dropdown-item active" href="/software">Software Development</a>
             </div>
-            <a class="btn btn-light" href="/portal">Portal</a>
+            <a type="btn" class="btn btn-light" href="/portal">Portal</a>
           </div>
         </div>
       </div>
@@ -59,9 +59,16 @@
         <div class="col-md-12">
           <div class="card">
             <div class="card-body">
-              <h1 class="text-center">404</h1>
-              <h5 class="text-center mb-5">Page not found</h5>
-              <p class="text-center">You would have thought we would have fixed this...</p>
+              <h3>What is the CompSoc Development Hub?</h3>
+              <p class="mb-4">Welcome to the CompSoc Development Hub (CompSSH), a hub of open source repositories from Kent's Computing Society aimed at getting more people in university into Open Source. If you are feeling lost, don’t worry, we have written the following few points to get you up to speed as quickly as possible. Of course if something is not clear, feel free to reach out to anyone. We are all very excited to see your contributions, see you in the git log!</p>
+              <h4>What is the CompSoc Development Hub?</h4>
+              <p class="mb-4">Most (all of ours) Open Source projects use git for managing their source code. If you are unsure about your git skills, <a href="https://try.github.io/">GitHub has an amazing guide.</a><br>CompSSH uses Github Issues and Pull Requests to track bugs, features and manage contributions, other Open Source projects use mailing lists (i.e., the Linux kernel).</p>
+              <h4>Featured Projects</h4>
+              
+              <div class="container">
+                <div id="featured-projects-list" class="row">
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -69,6 +76,26 @@
     </div>
 
     <script>
+      $.get("https://api.github.com/orgs/kentcompsoc/repos", function( data ) {
+        $( "#featured-projects-list" ).empty();
+        for (var repo of data) {
+          $( "#featured-projects-list" ).append(`
+              <div class="col-md-4 col-sm-6">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="card-title"><a href="${repo.html_url}" target="_blank">${repo.name}</a></h5>
+                    <p class="card-text">${(repo.description) ? repo.description: "No Description"}</p>
+                  </div>
+                  <div class="card-footer">
+                    <span class="github-lang">${repo.language}</span>
+                    <span class="icon github-stars">${repo.stargazers_count}</span>
+                    <span class="icon github-issues"><a href="${repo.html_url}/issues" target="_blank">${repo.open_issues_count}</a></span>
+                  </div>
+                </div>
+              </div>
+                  `);
+        }
+      }, "json" );
       document.addEventListener('DOMContentLoaded', function() {
         // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
         // // The Firebase SDK is initialized and available here!
@@ -80,14 +107,6 @@
         //
         // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
 
-        try {
-          let app = firebase.app();
-          let features = ['auth', 'database', 'messaging', 'storage'].filter(feature => typeof app[feature] === 'function');
-          document.getElementById('load').innerHTML = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          document.getElementById('load').innerHTML = 'Error loading the Firebase SDK, check the console.';
-        }
       });
       $(document).ready(function() {
     $(".dropdown-toggle").dropdown();
